@@ -1,11 +1,42 @@
-<!DOCTYPE html>
-<html>
-  <head>
-    <title><%= title %></title>
-    <link rel='stylesheet' href='/stylesheets/style.css' />
-  </head>
-  <body>
-    <h1><%= title %></h1>
-    <p>Welcome to <%= title %></p>
-  </body>
+<!doctype html>
+<html lang="en" data-theme="dark">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Express</title>
+  <link rel="stylesheet" href="https://unpkg.com/@picocss/pico@1.*/css/pico.min.css">
+  <link rel='stylesheet' href='/stylesheets/style.css' />
+</head>
+<body>
+  <nav>
+    <ul>
+      <li><h1>Something.</h1></li>
+    </ul>
+    <ul>
+      <li><a href="#">Link</a></li>
+      <li><a href="#">Link</a></li>
+    </ul>
+  </nav>
+
+  <h2>quizname</h2>
+  <progress value="25" max="100"></progress>
+  <article>
+    <h2>Question</h2>
+    <form>
+      <label for="radio-1">
+        <input type="radio" id="radio-1" name="radio" value="radio-1" checked>
+        option 1
+      </label>
+      <label for="radio-2">
+        <input type="radio" id="radio-2" name="radio" value="radio-2">
+        option 2
+      </label>
+      <label for="radio-3">
+        <input type="radio" id="radio-3" name="radio" value="radio-3">
+        option 3
+      </label>
+      <button type="submit">Next</button>
+    </form>
+  </article>
+</body>
 </html>

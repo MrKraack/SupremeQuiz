@@ -37,13 +37,20 @@
 }
 
 body {
-  width: 100vw;
+  max-width: 100vw;
   height: 100vh;
+  margin: 0;
+  padding: 1rem 5rem;
+}
+
+main {
   display: flex;
+  height: 100%;
+  padding: 0 !important;
+  width: 30rem !important;
   justify-content: center;
   align-items: center;
 }
+main article {width: 30rem}
 
-body > * {
-  width: 30rem;
-}
+
