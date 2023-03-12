@@ -8,22 +8,39 @@
 		<link rel='stylesheet' href='/stylesheets/style.css' />
 	</head>
 	<body>
-		<section >
-			<h1>Sign up</h1>
-			<form action="/signup" method="post">
-				<label for="username">Username</label>
-				<input id="username" name="username" type="text" required>
+		<main>
+			<article>
+				<h1>Sign up</h1>
+				<form action="/signup" method="post">
+					<div class="grid">
+						<label for="username">
+							Username
+							<input id="username" name="username" type="text" required>
+						</label>
 
-				<label for="new-password">Password</label>
-				<input id="new-password" name="password" type="password" required>
+						<label for="email">
+							E-mail
+							<input id="email" name="email" type="text" required>
 
-				<label for="conf-new-password">Confirm password</label>
-				<input id="conf-new-password" name="conf-password" type="password" required>
+						</label>
+					</div>
 
-				<button type="submit">Sign up</button>
-			</form>
-			<hr>
-			<p>Already have an account? <a href="/login">Sign in</a></p>
-		</section>
+					<label for="new-password">
+						Password
+						<input id="new-password" name="password" type="password" required>
+					</label>
+
+					<label for="conf-new-password">
+						Confirm password
+						<input id="conf-new-password" name="conf-password" type="password" required>
+					</label>
+
+					<button type="submit">Sign up</button>
+				</form>
+				<hr>
+				<p>Already have an account? <a href="/login">Sign in</a></p>
+			</article>
+		</main>
+
 	</body>
 </html>
