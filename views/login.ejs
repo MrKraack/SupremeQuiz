@@ -1,0 +1,24 @@
+<!doctype html>
+<html lang="en" data-theme="dark">
+	<head>
+		<meta charset="utf-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1">
+		<title>Express</title>
+		<link rel="stylesheet" href="https://unpkg.com/@picocss/pico@1.*/css/pico.min.css">
+		<link rel='stylesheet' href='/stylesheets/style.css' />
+	</head>
+	<body>
+		<section>
+			<h1>Sign in</h1>
+			<form action="/login/password" method="post">
+				<label for="username">Username</label>
+				<input id="username" name="username" type="text" autocomplete="username" required autofocus>
+				<label for="current-password">Password</label>
+				<input id="current-password" name="password" type="password" autocomplete="current-password" required>
+				<button type="submit">Sign in</button>
+			</form>
+			<hr>
+			<p>Don't have an account? <a href="/signup">Sign up</a></p>
+		</section>
+	</body>
+</html>
