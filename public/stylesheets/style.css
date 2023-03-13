@@ -5,6 +5,7 @@
   --primary-hover: #ff9800;
   --primary-focus: rgba(251, 140, 0, 0.25);
   --primary-inverse: #FFF;
+  --secondary: #f4511e;
 }
 
 /* Orange (Common styles) */
@@ -22,6 +23,11 @@ body {
   padding: 1rem 5rem;
 }
 
+nav img {
+  height: 1.5rem;
+  width: auto;
+}
+
 main {
   display: flex;
   height: 100%;
@@ -32,4 +38,18 @@ main {
 }
 main article {width: 30rem}
 
+#userHeader {
+  display: flex;
+  flex-direction: row;
+  gap: 1rem;
+  height: fit-content;
+  align-items: center;
+}
+#userHeader img {width: 4rem; height: auto}
+#userHeader h2 {margin: 0;}
+
+.answer {
+  display: flex;
+  align-items: baseline;
+}
 
