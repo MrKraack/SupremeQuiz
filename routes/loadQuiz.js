@@ -1,5 +1,5 @@
 const mongoose = require('mongoose');
-import connection from './'
+import connection from './quizSchema.js'
 
 router.get('/loadQuiz', (req, res) =>{
     
@@ -8,7 +8,7 @@ router.get('/loadQuiz', (req, res) =>{
 });
 
 router.get('/loadQuiz', (req, res) =>{
-
+    
 
     res.render('loadQuiz')
 });
