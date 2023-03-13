@@ -1,0 +1,68 @@
+<!doctype html>
+<html lang="en" data-theme="dark">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Express</title>
+    <link rel="stylesheet" href="https://unpkg.com/@picocss/pico@1.*/css/pico.min.css">
+    <link rel='stylesheet' href='/stylesheets/style.css' />
+</head>
+<body>
+<nav>
+    <ul>
+        <li><strong>Something.</strong></li>
+    </ul>
+    <ul>
+        <li><a href="#">quiz 1</a></li>
+        <li><a href="#">quiz 2</a></li>
+        <li>
+            <details role="list" dir="rtl">
+                <summary aria-haspopup="listbox" role="link" >
+                    <img src="/images/dog.png" alt="user avatar"/>
+                </summary>
+                <ul role="listbox">
+                    <li><a href="/addquiz">Add quiz</a></li>
+                    <li><a href="/user">User settings</a></li>
+                    <li><a href="#">Logout</a></li>
+                </ul>
+            </details>
+        </li>
+    </ul>
+</nav>
+
+<article>
+    <section id="userHeader" class="container">
+        <img src="/images/dog.png" alt="user avatar"/>
+        <h2>Username</h2>
+    </section>
+    <form action="/update-user" method="post">
+        <div class="grid">
+            <label for="username">
+                Username
+                <input id="username" name="username" type="text" required>
+            </label>
+
+            <label for="email">
+                E-mail
+                <input id="email" name="email" type="text" required>
+
+            </label>
+        </div>
+
+        <label for="new-password">
+            Password
+            <input id="new-password" name="password" type="password" required>
+        </label>
+
+        <label for="conf-new-password">
+            Confirm password
+            <input id="conf-new-password" name="conf-password" type="password" required>
+        </label>
+
+        <button type="submit">Update user</button>
+        <button type="submit" class="secondary outline">Delete user</button>
+    </form>
+</article>
+
+</body>
+</html>
