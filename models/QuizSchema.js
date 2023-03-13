@@ -1,6 +1,6 @@
 const mongoose = require('mongoose');
 
-const quizSchema = new mongoose.schema({
+const quizSchema = new mongoose.Schema({
     titel: {type: String}, // Spørgsmålet
     answerArray: {type: []}, // spørgsmål og svar findes er i array
     question: {type: Object}, // enkelte spørgsmål med svar der er i objektet
