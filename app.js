@@ -10,7 +10,6 @@ let urlDatabase = "mongodb+srv://Supreme:<password>@supremecluster.sq3adcq.mongo
 
 var indexRouter = require('./routes/index');
 var authRouter = require('./routes/auth');
-const { url } = require('inspector');
 
 var app = express();
 
