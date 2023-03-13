@@ -1,7 +1,10 @@
-// const mongoose = require('mongoose');
-// const quizSchema = mongoose.model("quiz", quizSchema)
-//
-// module.exports = async (res) => {
-//     const quizModel = await quizSchema.find({});
-//
-// }
+const mongoose = require('mongoose');
+const quizSchema = require('../../models/QuizSchema')
+
+module.exports = async (res) => {
+
+    const quizzes = await quizSchema.find();
+
+    res.json(quizzes);
+   
+}
