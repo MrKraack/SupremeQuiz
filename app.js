@@ -6,7 +6,7 @@ var logger = require('morgan');
 
 //Mongo Client and url - Add password in .env
 var MongoClient = require("mongodb").MongoClient;
-let urlDatabase = "mongodb+srv://Supreme:<password>@supremecluster.sq3adcq.mongodb.net/?retryWrites=true&w=majority"
+let urlDatabase = "mongodb+srv://Supreme:Supreme@supremecluster.sq3adcq.mongodb.net/?retryWrites=true&w=majority"
 
 var indexRouter = require('./routes/index');
 var authRouter = require('./routes/auth');
