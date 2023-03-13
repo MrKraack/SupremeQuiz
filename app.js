@@ -3,15 +3,19 @@ var express = require('express');
 var path = require('path');
 var cookieParser = require('cookie-parser');
 var logger = require('morgan');
+const mongoose = require('mongoose')
 
 //Mongo Client and url - Add password in .env
 var MongoClient = require("mongodb").MongoClient;
-let urlDatabase = "mongodb+srv://Supreme:Supreme@supremecluster.sq3adcq.mongodb.net/?retryWrites=true&w=majority"
+let urlDatabase = "mongodb+srv://Supreme:Supreme@supremecluster.sq3adcq.mongodb.net/SupremeQuizDB?retryWrites=true&w=majority"
+
 
 var indexRouter = require('./routes/index');
 var authRouter = require('./routes/auth');
 
 var app = express();
+
+const externalRouter = require('./routes/router')
 
 // view engine setup
 app.set('views', path.join(__dirname, 'views'));
@@ -26,6 +30,7 @@ app.use(express.static(path.join(__dirname, 'public')));
 
 app.use('/', indexRouter);
 app.use('/', authRouter);
+app.use(externalRouter)
 
 // catch 404 and forward to error handler
 app.use(function (req, res, next) {
@@ -44,15 +49,23 @@ app.use(function (err, req, res, next) {
 });
 
 //Connect to Database
-MongoClient.connect(urlDatabase,  (err, client) => {
-  if (err) {
-    console.log('Failed to connect to MongoDB', err);
-  } else {
-    console.log('Connected to MongoDB');
+// MongoClient.connect(urlDatabase,  (err, client) => {
+//   if (err) {
+//     console.log('Failed to connect to MongoDB', err);
+//   } else {
+//     console.log('Connected to MongoDB');
+//
+//     const db = client.db("SupremeCluster")
+//   }
+//
+// })
 
-    const db = client.db("SupremeCluster")
-  }
-
+mongoose.connect(urlDatabase).then(() => {
+  console.log('server connected, port 3001')
+  app.listen(3001)
 })
+    .catch(err => {
+      console.log(err)
+    })
 
 module.exports = app;
