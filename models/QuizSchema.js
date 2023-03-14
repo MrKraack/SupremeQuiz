@@ -19,22 +19,22 @@ const quizSchema = new mongoose.Schema({
     titel: { type: String },
     category: { type: String },
     //Schema for questins
-    questions: {
-        type: { Array },
+    questions: [{
+
+
         question: {
             type: { Object },
             name: { type: String },
             //schema for Answers
-            answerArray:{
-                type: { Array },
+            answerArray: [{
                 answer: {
                     type: { Object },
                     answerName: { type: String },
                     answerIsCorrect: { type: Boolean }
                 }
-            }
+            }]
         },
-    },
+    }],    
     createdBy: { type: String }, // Navn på hvem der lavede spørgsmål
     createdDate: { type: Date } // Hvornår spørgsmålet blev lavet.
 
