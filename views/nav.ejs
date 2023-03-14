@@ -1,0 +1,27 @@
+<nav>
+    <ul>
+        <li><strong>Something.</strong></li>
+    </ul>
+    <ul>
+        <% for (var i = 0; i < links.length; i++) { %>
+            <li>
+                <a href="<%= links[i].href %>">
+                    <%= links[i].name %>
+                </a>
+            </li>
+        <% } %>
+        <li>
+            <details role="list" dir="rtl">
+                <summary aria-haspopup="listbox" role="link" >
+                    <img src="/images/dog.png" alt="user avatar"/>
+                </summary>
+                <ul role="listbox">
+                    <li><a href="/addquiz">Add quiz</a></li>
+                    <li><a href="/stats">Statistics</a></li>
+                    <li><a href="/user">User settings</a></li>
+                    <li><a href="#">Logout</a></li>
+                </ul>
+            </details>
+        </li>
+    </ul>
+</nav>

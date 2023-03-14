@@ -8,27 +8,7 @@
     <link rel='stylesheet' href='/stylesheets/style.css' />
 </head>
 <body>
-<nav>
-    <ul>
-        <li><strong>Something.</strong></li>
-    </ul>
-    <ul>
-        <li><a href="#">quiz 1</a></li>
-        <li><a href="#">quiz 2</a></li>
-        <li>
-            <details role="list" dir="rtl">
-                <summary aria-haspopup="listbox" role="link" >
-                    <img src="/images/dog.png" alt="user avatar"/>
-                </summary>
-                <ul role="listbox">
-                    <li><a href="/addquiz">Add quiz</a></li>
-                    <li><a href="/user">User settings</a></li>
-                    <li><a href="#">Logout</a></li>
-                </ul>
-            </details>
-        </li>
-    </ul>
-</nav>
+<% include nav.ejs %>
 
 <article>
     <section id="userHeader" class="container">
