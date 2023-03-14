@@ -1,36 +1,57 @@
-var createError = require('http-errors');
-var express = require('express');
-var path = require('path');
-var cookieParser = require('cookie-parser');
-var logger = require('morgan');
+const express = require('express');
+const session = require('express-session');
+const path = require('path');
+const cookieParser = require('cookie-parser');
+const createError = require('http-errors');
+
+const passport = require('passport');
+const logger = require('morgan');
 const mongoose = require('mongoose')
+const dotenv = require('dotenv')
 
-//Mongo Client and url - Add password in .env
-var MongoClient = require("mongodb").MongoClient;
-let urlDatabase = "mongodb+srv://Supreme:Supreme@supremecluster.sq3adcq.mongodb.net/SupremeQuizDB?retryWrites=true&w=majority"
+const indexRouter = require('./routes/index');
+const authRouter = require('./routes/auth');
+const apiRouter = require('./routes/router')
 
+dotenv.config()
 
-var indexRouter = require('./routes/index');
-var authRouter = require('./routes/auth');
+const urlDatabase = `mongodb+srv://${process.env.DB_PASSPORT}.mongodb.net/SupremeQuizDB?retryWrites=true&w=majority`
+const port = 3001
 
-var app = express();
+const app = express();
 
-const externalRouter = require('./routes/router')
+app.use(session({
+    secret: process.env.SESSION_SECRET,
+    resave: false,
+    saveUninitialized: true,
+    cookie: { maxAge: 60 * 60 * 1000 } // 1 hour
+}));
 
 // view engine setup
 app.set('views', path.join(__dirname, 'views'));
 app.set('view engine', 'ejs');
-
 
 app.use(logger('dev'));
 app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
+app.use(passport.initialize());
+app.use(passport.session());
+
+const User = require('./models/UserModel')
+
+// Passport Local Strategy
+passport.use(User.createStrategy());
+
+// To use with sessions
+passport.serializeUser(User.serializeUser());
+passport.deserializeUser(User.deserializeUser());
 
 app.use('/', indexRouter);
 app.use('/', authRouter);
-app.use(externalRouter)
+
+app.use(apiRouter)
 
 // catch 404 and forward to error handler
 app.use(function (req, res, next) {
@@ -48,21 +69,12 @@ app.use(function (err, req, res, next) {
   res.render('error');
 });
 
-//Connect to Database
-// MongoClient.connect(urlDatabase,  (err, client) => {
-//   if (err) {
-//     console.log('Failed to connect to MongoDB', err);
-//   } else {
-//     console.log('Connected to MongoDB');
-//
-//     const db = client.db("SupremeCluster")
-//   }
-//
-// })
-
-mongoose.connect(urlDatabase).then(() => {
-  console.log('server connected, port 3001')
-  app.listen(3001)
+mongoose.connect(urlDatabase, {
+    useNewUrlParser: true,
+    useUnifiedTopology: true
+}).then(() => {
+  console.log(`server connected, port ${port}`)
+  app.listen(port)
 })
     .catch(err => {
       console.log(err)

@@ -1,19 +1,20 @@
-var express = require('express');
-var router = express.Router();
+const express = require('express');
+const router = express.Router();
+const connectEnsureLogin = require('connect-ensure-login')
 
 /* GET home page. */
-router.get('/', function(req, res, next) {
+router.get('/', connectEnsureLogin.ensureLoggedIn, function(req, res, next) {
   res.render('index');
 });
 
-router.get('/user', function(req, res, next) {
+router.get('/user', connectEnsureLogin.ensureLoggedIn, function(req, res, next) {
   res.render('user');
 });
 
-router.get('/addquiz', function(req, res, next) {
+router.get('/addquiz', connectEnsureLogin.ensureLoggedIn, function(req, res, next) {
   res.render('addquiz');
 });
-router.get('/stats', function(req, res, next) {
+router.get('/stats', connectEnsureLogin.ensureLoggedIn, function(req, res, next) {
   res.render('stats');
 });
 

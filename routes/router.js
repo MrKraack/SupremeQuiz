@@ -1,4 +1,5 @@
 const express = require('express')
+const passport = require('passport');
 
 const userCreateRoute = require('./user/createUser')
 const userLoginRoute = require('./user/loginUser')
@@ -15,7 +16,7 @@ const router = express.Router()
 
 //User routes
 router.post('/register', userCreateRoute)
-router.post('/loginUser', userLoginRoute)
+router.post('/loginUser', passport.authenticate('local', { failureRedirect: '/' }, userLoginRoute))
 router.put('/updateUser/:id', userUpdateRoute)
 router.delete('/deleteUser/:id', userDeleteRoute)
 
