@@ -10,24 +10,23 @@
 <body>
 <% include nav.ejs %>
 
-  <h2>quizname</h2>
-  <progress value="25" max="100"></progress>
+  <h2>quiz name</h2>
   <article>
-    <h2>Question</h2>
     <form>
-      <label for="radio-1">
-        <input type="radio" id="radio-1" name="radio" value="radio-1" checked>
-        option 1
-      </label>
-      <label for="radio-2">
-        <input type="radio" id="radio-2" name="radio" value="radio-2">
-        option 2
-      </label>
-      <label for="radio-3">
-        <input type="radio" id="radio-3" name="radio" value="radio-3">
-        option 3
-      </label>
-      <button type="submit">Next</button>
+      <% for (var i = 0; i < question.length; i++) { %>
+        <div>
+          <h2><% question[i].name %>></h2>
+
+          <% for (var j = 0; j < question[i].answers.length; i++) { %>
+            <label for="radio-<% [j] %>">
+              <input type="radio" id="radio-<% [j] %>" name="radio" value="radio-<% [j] %>" checked>
+              <% answers[j].name %>
+            </label>
+          <% }%>
+
+        </div>
+      <% } %>
+      <button type="submit">Check answers</button>
     </form>
   </article>
 </body>
