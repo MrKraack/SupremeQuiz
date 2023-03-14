@@ -13,5 +13,8 @@ router.get('/user', function(req, res, next) {
 router.get('/addquiz', function(req, res, next) {
   res.render('addquiz');
 });
+router.get('/stats', function(req, res, next) {
+  res.render('stats');
+});
 
 module.exports = router;
