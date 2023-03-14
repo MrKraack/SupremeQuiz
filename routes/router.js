@@ -1,6 +1,7 @@
 const express = require('express')
 
 const userCreateRoute = require('./user/createUser')
+const userLoginRoute = require('./user/loginUser')
 
 const quizLoadRoute = require('./quiz/loadQuiz')
 
@@ -12,6 +13,8 @@ const router = express.Router()
 
 //User routes
 router.post('/register', userCreateRoute)
+router.post('/loginUser', userLoginRoute)
+
 
 //quiz routes
 router.get('/loadQuiz', quizLoadRoute)
