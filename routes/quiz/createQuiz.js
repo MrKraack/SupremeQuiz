@@ -8,6 +8,11 @@ module.exports = async (req, res) => {
 
     try {
         console.log("works")
+
+        //Find quiz
+        //Last element in array
+        //Get ID
+        
         
         let quiz = new quizSchema({
             quizId,
