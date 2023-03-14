@@ -4,14 +4,13 @@ const path = require('path');
 const cookieParser = require('cookie-parser');
 const createError = require('http-errors');
 
+const cors = require('cors')
 const passport = require('passport');
 const logger = require('morgan');
 const mongoose = require('mongoose')
 const dotenv = require('dotenv')
 
-const indexRouter = require('./routes/index');
-const authRouter = require('./routes/auth');
-const apiRouter = require('./routes/router')
+const router = require('./routes/router')
 
 dotenv.config()
 
@@ -19,6 +18,12 @@ const urlDatabase = `mongodb+srv://${process.env.DB_PASSPORT}.mongodb.net/Suprem
 const port = 3001
 
 const app = express();
+
+app.use(cors(
+    {
+        origin: "*"
+    }
+))
 
 app.use(session({
     secret: process.env.SESSION_SECRET,
@@ -48,10 +53,7 @@ passport.use(User.createStrategy());
 passport.serializeUser(User.serializeUser());
 passport.deserializeUser(User.deserializeUser());
 
-app.use('/', indexRouter);
-app.use('/', authRouter);
-
-app.use(apiRouter)
+app.use(router)
 
 // catch 404 and forward to error handler
 app.use(function (req, res, next) {
