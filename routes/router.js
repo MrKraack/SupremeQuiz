@@ -1,6 +1,9 @@
 const express = require('express')
 
 const userCreateRoute = require('./user/createUser')
+const userLoginRoute = require('./user/loginUser')
+const userDeleteRoute = require('./user/deleteUser')
+const userUpdateRoute = require('./user/updateUser')
 
 const quizLoadRoute = require('./quiz/loadQuiz')
 
@@ -12,6 +15,10 @@ const router = express.Router()
 
 //User routes
 router.post('/register', userCreateRoute)
+router.post('/loginUser', userLoginRoute)
+router.put('/updateUser/:id', userUpdateRoute)
+router.delete('/deleteUser/:id', userDeleteRoute)
+
 
 //quiz routes
 router.get('/loadQuiz', quizLoadRoute)
