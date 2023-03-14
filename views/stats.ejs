@@ -1,0 +1,70 @@
+<!doctype html>
+<html lang="en" data-theme="dark">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Express</title>
+    <link rel="stylesheet" href="https://unpkg.com/@picocss/pico@1.*/css/pico.min.css">
+    <link rel='stylesheet' href='/stylesheets/style.css' />
+</head>
+<body>
+    <% include nav.ejs %>
+
+    <article>
+        <h2>Statistics</h2>
+        <div class="grid">
+            <section class="headings">
+                <h5><ins>10 times</ins></h5>
+                <p>you quizzed</p>
+            </section>
+            <section class="headings">
+                <h5><ins>9 out of 10 times</ins></h5>
+                <p>you won</p>
+            </section>
+            <section class="headings">
+                <h5><ins>90%</ins></h5>
+                <p>is your score</p>
+            </section>
+        </div>
+        <section>
+            <h3>Category statistics</h3>
+            <details>
+                <summary role="button" class="outline">Category 1</summary>
+                <div class="grid">
+                    <section class="headings">
+                        <h5><ins>5 times</ins></h5>
+                        <p>you quizzed in category</p>
+                    </section>
+                    <section class="headings">
+                        <h5><ins>5 out of 5 times</ins></h5>
+                        <p>you won</p>
+                    </section>
+                    <section class="headings">
+                        <h5><ins>100%</ins></h5>
+                        <p>is your score</p>
+                    </section>
+                </div>
+            </details>
+            <details>
+                <summary role="button" class="outline">Category 2</summary>
+                <div class="grid">
+                    <section class="headings">
+                        <h5><ins>5 times</ins></h5>
+                        <p>you quizzed in category</p>
+                    </section>
+                    <section class="headings">
+                        <h5><ins>5 out of 5 times</ins></h5>
+                        <p>you won</p>
+                    </section>
+                    <section class="headings">
+                        <h5><ins>100%</ins></h5>
+                        <p>is your score</p>
+                    </section>
+                </div>
+            </details>
+        </section>
+
+    </article>
+
+</body>
+</html>
