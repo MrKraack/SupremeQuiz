@@ -23,6 +23,6 @@ router.delete('/deleteUser/:id', userDeleteRoute)
 //quiz routes
 router.get('/loadQuiz', quizLoadRoute)
 router.post('/createQuiz', quizCreateRoute)
-// router.post('/deleteQuiz', quizDeleteRoute)
+router.post('/deleteQuiz', quizDeleteRoute)
 
 module.exports = router
