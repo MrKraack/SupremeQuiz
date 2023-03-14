@@ -3,12 +3,8 @@ var express = require('express');
 var path = require('path');
 var cookieParser = require('cookie-parser');
 var logger = require('morgan');
-const mongoose = require('mongoose')
-const bodyParser = require("body-parser");
 
 
-//Mongo Client and url - Add password in .env
-var MongoClient = require("mongodb").MongoClient;
 let urlDatabase = "mongodb+srv://Supreme:Supreme@supremecluster.sq3adcq.mongodb.net/SupremeQuizDB?retryWrites=true&w=majority"
 
 
@@ -29,9 +25,7 @@ app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
-app.use(bodyParser.urlencoded({
-  extended: true
-}))
+
 
 app.use('/', indexRouter);
 app.use('/', authRouter);
@@ -54,12 +48,12 @@ app.use(function (err, req, res, next) {
 });
 
 
-mongoose.connect(urlDatabase).then(() => {
-  console.log('server connected, port 3001')
-  app.listen(3001)
-})
-    .catch(err => {
-      console.log(err)
-    })
+// mongoose.connect(urlDatabase).then(() => {
+//   console.log('server connected, port 3001')
+//   app.listen(3001)
+// })
+//     .catch(err => {
+//       console.log(err)
+//     })
 
 module.exports = app;

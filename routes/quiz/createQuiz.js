@@ -3,9 +3,7 @@ let quizSchema = require('../../models/QuizSchema')
 
 
 module.exports = async (req, res) => {
-
-    console.log(req.body);
-    let { quizId, titel, category, questions, question1 ,question2,
+    let { quizId, titel, category, question1 ,question2,
         q1answer1, q1answer2, q1answer3, q1answer4,
         q2answer1, q2answer2, q2answer3, q2answer4,
         answerIsCorrect, createdBy, createdDate } = req.body;
@@ -63,7 +61,7 @@ module.exports = async (req, res) => {
             createdDate
         });
 
-        await quiz.save()
+        // await quiz.save()
         console.log(quiz)
         res.json(quiz)
 
