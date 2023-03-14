@@ -2,9 +2,19 @@ var express = require('express');
 var router = express.Router();
 
 /* GET home page. */
-router.get('/', function(req, res, next) {
-  res.render('index');
+router.get('/',  async function(req, res, next) {
+  //Variable to hold quizArray
+  let quizArray;
+  //Fetch data from Server
+   await fetch("http://localhost:3001/loadQuiz")
+      .then((res) => res.json())
+      .then((data) => quizArray = data)
+
+  //Send server data with render
+  res.render('index', {Quizzez: quizArray});
 });
+
+
 
 router.get('/user', function(req, res, next) {
   res.render('user');

@@ -8,19 +8,18 @@
   <link rel='stylesheet' href='/stylesheets/style.css' />
 </head>
 <body>
-<% include nav.ejs %>
 
   <h2>quiz name</h2>
   <article>
     <form>
-      <% for (var i = 0; i < question.length; i++) { %>
+      <% for (var i = 0; i < Quizzez.length; i++) { %>
         <div>
-          <h2><% question[i].name %>></h2>
+          <h2><%- Quizzez[i].titel -%>></h2>
 
-          <% for (var j = 0; j < question[i].answers.length; i++) { %>
+          <%for (var j = 0; j < Quizzez[i].answerArray.length; i++) { %>
             <label for="radio-<% [j] %>">
               <input type="radio" id="radio-<% [j] %>" name="radio" value="radio-<% [j] %>" checked>
-              <% answers[j].name %>
+              <% answerArray[j].name %>
             </label>
           <% }%>
 
