@@ -4,6 +4,8 @@ var path = require('path');
 var cookieParser = require('cookie-parser');
 var logger = require('morgan');
 const mongoose = require('mongoose')
+const bodyParser = require("body-parser");
+
 
 //Mongo Client and url - Add password in .env
 var MongoClient = require("mongodb").MongoClient;
@@ -27,6 +29,9 @@ app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
+app.use(bodyParser.urlencoded({
+  extended: true
+}))
 
 app.use('/', indexRouter);
 app.use('/', authRouter);
@@ -48,17 +53,6 @@ app.use(function (err, req, res, next) {
   res.render('error');
 });
 
-//Connect to Database
-// MongoClient.connect(urlDatabase,  (err, client) => {
-//   if (err) {
-//     console.log('Failed to connect to MongoDB', err);
-//   } else {
-//     console.log('Connected to MongoDB');
-//
-//     const db = client.db("SupremeCluster")
-//   }
-//
-// })
 
 mongoose.connect(urlDatabase).then(() => {
   console.log('server connected, port 3001')
