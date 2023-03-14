@@ -16,6 +16,6 @@ router.post('/register', userCreateRoute)
 //quiz routes
 router.get('/loadQuiz', quizLoadRoute)
 router.post('/createQuiz', quizCreateRoute)
-// router.post('/deleteQuiz', quizDeleteRoute)
+router.delete('/deleteQuiz', quizDeleteRoute)
 
 module.exports = router
