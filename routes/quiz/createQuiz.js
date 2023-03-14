@@ -8,9 +8,16 @@ module.exports = async (req, res) => {
 
     try {
         console.log("works")
+
+        const quizID = await quizSchema.find({quizSchema});
+        console.log(quizID)
+
+        let lastObjectArray = quizID.slice(-1);
+
+        let lastIdCount = lastObjectArray[0].quizId + 1;    
         
         let quiz = new quizSchema({
-            quizId,
+            quizId: lastIdCount,
             titel,
             answerArray: [],
             question,
