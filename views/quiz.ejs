@@ -1,0 +1,32 @@
+<!doctype html>
+<html lang="en" data-theme="dark">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Express</title>
+  <link rel="stylesheet" href="https://unpkg.com/@picocss/pico@1.*/css/pico.min.css%22%3E">
+  <link rel='stylesheet' href='/stylesheets/style.css' />
+</head>
+<body>
+
+  <h2>quiz name</h2>
+  <article>
+    <form>
+      <% for (var i = 0; i < question.length; i++) { %>
+        <div>
+          <h2><% question[i].name %>></h2>
+
+          <% for (var j = 0; j < question[i].answers.length; i++) { %>
+            <label for="radio-<% [j] %>">
+              <input type="radio" id="radio-<% [j] %>" name="radio" value="radio-<% [j] %>" checked>
+              <% answers[j].name %>
+            </label>
+          <% }%>
+
+        </div>
+      <% } %>
+      <button type="submit">Check answers</button>
+    </form>
+  </article>
+</body>
+</html>

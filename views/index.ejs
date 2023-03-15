@@ -1,5 +1,6 @@
 <!doctype html>
 <html lang="en" data-theme="dark">
+
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -7,14 +8,17 @@
   <link rel="stylesheet" href="https://unpkg.com/@picocss/pico@1.*/css/pico.min.css">
   <link rel='stylesheet' href='/stylesheets/style.css' />
 </head>
+
 <body>
 
-  <h2>quiz name</h2>
+  <h2>Index</h2>
   <article>
     <form>
-     
-      <button type="submit">Check answers</button>
+      <% for (var i=0; i < QuizArray.length; i++) { %>
+        <a type="button" href="/quiz"><h1><%= QuizArray[i].category %></h1></a>
+        <% } %>
     </form>
   </article>
 </body>
+
 </html>

@@ -5,7 +5,8 @@ const connectEnsureLogin = require('connect-ensure-login')
 const userCreateRoutePassport = require('./user/createUserPassport')
 const userDeleteRoute = require('./user/deleteUser')
 
-// const quizLoadRoute = require('./quiz/loadQuiz')
+const quizLoadRoute = require('./quiz/loadQuiz')
+const quizIdLoadRoute = require('./quiz/')
 
 const quizCreateRoute = require('./quiz/createQuiz')
 
@@ -24,18 +25,18 @@ router.post(
     })
 );
 
-router.post('/logout', function(req, res, next){
-    req.logout(function(err) {
+router.post('/logout', function (req, res, next) {
+    req.logout(function (err) {
         if (err) { return next(err); }
         res.redirect('/login');
     });
 });
 
-router.get('/login', function(req, res, next) {
+router.get('/login', function (req, res, next) {
     res.render('login');
 });
 
-router.get('/signup', function(req, res, next) {
+router.get('/signup', function (req, res, next) {
     res.render('signup');
 });
 
@@ -46,22 +47,42 @@ router.post('/register', userCreateRoutePassport)
 router.delete('/deleteUser/:id', userDeleteRoute)
 
 //Website protected routes
-router.get('/', connectEnsureLogin.ensureLoggedIn(), function(req, res, next) {
-    res.render('index');
+router.get('/',  async function (req, res, next) {
+    //Variable to hold quizArray
+    let quizArray;
+    //Fetch data from Server
+    await fetch("http://localhost:3001/loadQuiz")
+        .then((res) => res.json())
+        .then((data) => quizArray = data)
+
+    //Send server data with render
+
+    res.render('index', { QuizArray: quizArray });
 });
-router.get('/user', connectEnsureLogin.ensureLoggedIn(), function(req, res, next) {
+
+router.get('/user', connectEnsureLogin.ensureLoggedIn(), function (req, res, next) {
     res.render('user');
 });
-router.get('/addquiz', connectEnsureLogin.ensureLoggedIn(), function(req, res, next) {
+router.get('/addquiz', connectEnsureLogin.ensureLoggedIn(), function (req, res, next) {
     res.render('addquiz');
 });
-router.get('/stats', connectEnsureLogin.ensureLoggedIn(), function(req, res, next) {
+router.get('/stats', connectEnsureLogin.ensureLoggedIn(), function (req, res, next) {
     res.render('stats');
 });
 
+router.get("/quiz", async function(req,res) {
+    await fetch("http://localhost:3001/:id")
+    .then((res) => res.json())
+    .then((data) => console.log(data))
+
+    res.render("quiz")
+})
+
 //quiz routes
-// router.get('/loadQuiz', quizLoadRoute)
+router.get("/quiz/:id", quizIdLoadRoute)
+router.get('/loadQuiz', quizLoadRoute)
 router.post('/createQuiz', quizCreateRoute)
 router.delete('/deleteQuiz/:id', quizDeleteRoute)
+
 
 module.exports = router
