@@ -6,12 +6,13 @@
     <title>Express</title>
     <link rel="stylesheet" href="https://unpkg.com/@picocss/pico@1.*/css/pico.min.css">
     <link rel='stylesheet' href='/stylesheets/style.css' />
+    
 </head>
 <body>
 
     <article>
         <h2>Add quiz</h2>
-        <form action="/createQuiz" method="post">  
+        <form id="createQuizForm" action="/createQuiz" method="post">  
             <label for="category">
                 Category
                 <input id="category" name="category" type="text" required>
@@ -29,22 +30,22 @@
 
                 <div class="grid">
                     <div class="answer">
-                        <input type="checkbox" id="correct" name="correct">
-                        <input id="q1answer1" name="q1answer1" type="text" required>
+                        <input type="checkbox" id="q1answer1IsCorrect" name="q1answer1IsCorrect">
+                        <input id="q1answer" name="q1answer1" type="text" required>
                     </div>
                     <div class="answer">
-                        <input type="checkbox" id="correct" name="correct">
-                        <input id="q1answer2" name="q1answer2" type="text" required>
+                        <input type="checkbox" id="q1answer2IsCorrect" name="q1answer2IsCorrect">
+                        <input id="q1answer" name="q1answer2" type="text" required>
                     </div>
                 </div>
                 <div class="grid">
                     <div class="answer">
-                        <input type="checkbox" id="correct" name="correct">
-                        <input id="q1answer3" name="q1answer3" type="text" required>
+                        <input type="checkbox" id="q1answer3IsCorrect" name="q1answer3IsCorrect">
+                        <input id="q1answer" name="q1answer3" type="text" required>
                     </div>
                     <div class="answer">
-                        <input type="checkbox" id="correct" name="correct">
-                        <input id="q1answer4" name="q1answer4" type="text" required>
+                        <input type="checkbox" id="q1answer4IsCorrect" name="q1answer4IsCorrect">
+                        <input id="q1answer" name="q1answer4" type="text" required>
                     </div>
                 </div>
             </details>
@@ -61,22 +62,54 @@
 
                 <div class="grid">
                     <div class="answer">
-                        <input type="checkbox" id="correct" name="correct">
+                        <input type="checkbox" id="q2answer1IsCorrect" name="q2answer1IsCorrect">
                         <input id="q2answer1" name="q2answer1" type="text" required>
                     </div>
                     <div class="answer">
-                        <input type="checkbox" id="correct" name="correct">
+                        <input type="checkbox" id="q2answer2IsCorrect" name="q2answer2IsCorrect">
                         <input id="q2answer2" name="q2answer2" type="text" required>
                     </div>
                 </div>
                 <div class="grid">
                     <div class="answer">
-                        <input type="checkbox" id="correct" name="correct">
+                        <input type="checkbox" id="q2answer3IsCorrect" name="q2answer3IsCorrect">
                         <input id="q2answer3" name="q2answer3" type="text" required>
                     </div>
                     <div class="answer">
-                        <input type="checkbox" id="correct" name="correct">
+                        <input type="checkbox" id="q2answer4IsCorrect" name="q2answer4IsCorrect">
                         <input id="q2answer4" name="q2answer4" type="text" required>
+                    </div>
+                </div>
+            </details>
+            <details id="question3">
+                <summary role="button" class="outline">Question 3</summary>
+                <label for="question3">
+                    Question
+                    <input id="question3" name="question3" type="text" required>
+                </label>
+
+                <label for="answer">
+                    Answers (check of correct answer)
+                </label>
+
+                <div class="grid">
+                    <div class="answer">
+                        <input type="checkbox" id="q3answer1IsCorrect" name="q3answer1IsCorrect">
+                        <input id="q3answer1" name="q3answer1" type="text" required>
+                    </div>
+                    <div class="answer">
+                        <input type="checkbox" id="q3answer2IsCorrect" name="q3answer2IsCorrect">
+                        <input id="q3answer2" name="q3answer2" type="text" required>
+                    </div>
+                </div>
+                <div class="grid">
+                    <div class="answer">
+                        <input type="checkbox" id="q3answer3IsCorrect" name="q3answer3IsCorrect">
+                        <input id="q3answer3" name="q3answer3" type="text" required>
+                    </div>
+                    <div class="answer">
+                        <input type="checkbox" id="q3answer4IsCorrect" name="q3answer4IsCorrect">
+                        <input id="q3answer4" name="q3answer4" type="text" required>
                     </div>
                 </div>
             </details>
@@ -85,6 +118,5 @@
         </form>
 
     </article>
-
 </body>
 </html>

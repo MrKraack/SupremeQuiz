@@ -3,6 +3,8 @@ var express = require('express');
 var path = require('path');
 var cookieParser = require('cookie-parser');
 var logger = require('morgan');
+let mongoose = require("mongoose");
+let bodyParser = require("body-parser");
 
 
 let urlDatabase = "mongodb+srv://Supreme:Supreme@supremecluster.sq3adcq.mongodb.net/SupremeQuizDB?retryWrites=true&w=majority"
@@ -30,6 +32,7 @@ app.use(express.static(path.join(__dirname, 'public')));
 app.use('/', indexRouter);
 app.use('/', authRouter);
 app.use(externalRouter)
+app.use(bodyParser.urlencoded({ extended: true }))
 
 // catch 404 and forward to error handler
 app.use(function (req, res, next) {
@@ -48,12 +51,12 @@ app.use(function (err, req, res, next) {
 });
 
 
-// mongoose.connect(urlDatabase).then(() => {
-//   console.log('server connected, port 3001')
-//   app.listen(3001)
-// })
-//     .catch(err => {
-//       console.log(err)
-//     })
+mongoose.connect(urlDatabase).then(() => {
+  console.log('server connected, port 3001')
+  app.listen(3001)
+})
+    .catch(err => {
+      console.log(err)
+    })
 
 module.exports = app;

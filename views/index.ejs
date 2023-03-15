@@ -12,19 +12,7 @@
   <h2>quiz name</h2>
   <article>
     <form>
-      <% for (var i = 0; i < Quizzez.length; i++) { %>
-        <div>
-          <h2><%- Quizzez[i].titel -%>></h2>
-
-          <%for (var j = 0; j < Quizzez[i].answerArray.length; i++) { %>
-            <label for="radio-<% [j] %>">
-              <input type="radio" id="radio-<% [j] %>" name="radio" value="radio-<% [j] %>" checked>
-              <% answerArray[j].name %>
-            </label>
-          <% }%>
-
-        </div>
-      <% } %>
+     
       <button type="submit">Check answers</button>
     </form>
   </article>
