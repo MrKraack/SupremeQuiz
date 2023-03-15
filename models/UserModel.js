@@ -1,3 +1,4 @@
+const passportLocalMongoose = require('passport-local-mongoose');
 const mongoose = require("mongoose");
 
 const userSchema = new mongoose.Schema({
@@ -7,5 +8,7 @@ const userSchema = new mongoose.Schema({
     avatarUrl: {type: String, required:false},
     quizScore: { type: Array }
 }, {collection: 'Users'});
+
+userSchema.plugin(passportLocalMongoose)
 
 module.exports = User = mongoose.model("user", userSchema);
