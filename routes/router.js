@@ -4,7 +4,6 @@ const connectEnsureLogin = require('connect-ensure-login')
 
 const userCreateRoutePassport = require('./user/createUserPassport')
 const userDeleteRoute = require('./user/deleteUser')
-const userUpdateRoute = require('./user/updateUser')
 
 const quizLoadRoute = require('./quiz/loadQuiz')
 
@@ -43,7 +42,7 @@ router.get('/signup', function(req, res, next) {
 //User routes
 router.post('/register', userCreateRoutePassport)
 // router.post('/loginUser', userLoginRoutePassport)
-router.put('/updateUser/:id', userUpdateRoute)
+// router.put('/updateUser/:id', userUpdateRoute)
 router.delete('/deleteUser/:id', userDeleteRoute)
 
 //Website protected routes
