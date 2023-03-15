@@ -1,5 +1,6 @@
 const User = require("../../models/UserModel")
 const bcrypt = require('bcrypt')
+const passport = require("passport");
 
 module.exports = async (req, res) => {
     const { username, password } = req.body;
@@ -19,6 +20,10 @@ module.exports = async (req, res) => {
         const isMatch = await bcrypt.compare(password, user.password);
         if (!isMatch) return res.status(400).json({ msg: 'Username or password incorrect' });
 
+        passport.authenticate('local', {
+            failureRedirect: '/login',
+            successRedirect: '/',
+        })
         res.send('Login successful')
 
     } catch (err) {
