@@ -10,12 +10,14 @@
 </head>
 
 <body>
+  <% include nav.ejs %>
+
 
   <h2>Quiz</h2>
   <article class="grid">
     <form>
       <% for (var i=0; i < QuizArray.length; i++) { %>
-        <a role="button" href="/quiz"><%= QuizArray[i].category %></a>
+        <a role="button" href="/quiz/<%= i+1 %>"><%= QuizArray[i].category %></a>
         <% } %>
     </form>
   </article>

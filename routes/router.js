@@ -6,7 +6,7 @@ const userCreateRoutePassport = require('./user/createUserPassport')
 const userDeleteRoute = require('./user/deleteUser')
 
 const quizLoadRoute = require('./quiz/loadQuiz')
-const quizIdLoadRoute = require('./quiz/LoadQuizById')
+const quizIdLoadRoute = require('./quiz/loadQuizById')
 
 const quizCreateRoute = require('./quiz/createQuiz')
 
@@ -47,7 +47,7 @@ router.post('/register', userCreateRoutePassport)
 router.delete('/deleteUser/:id', userDeleteRoute)
 
 //Website protected routes
-router.get('/',  async function (req, res, next) {
+router.get('/', connectEnsureLogin.ensureLoggedIn(),  async function (req, res, next) {
     //Variable to hold quizArray
     let quizArray;
     //Fetch data from Server
@@ -56,7 +56,6 @@ router.get('/',  async function (req, res, next) {
         .then((data) => quizArray = data)
 
     //Send server data with render
-
     res.render('index', { QuizArray: quizArray });
 });
 
@@ -70,16 +69,16 @@ router.get('/stats', connectEnsureLogin.ensureLoggedIn(), function (req, res, ne
     res.render('stats');
 });
 
-router.get("/quiz", async function(req,res) {
-    await fetch("http://localhost:3001/:id")
-    .then((res) => res.json())
-    .then((data) => console.log(data))
-
-    res.render("quiz")
-})
 
 //quiz routes
-router.get("/quiz/:id", quizIdLoadRoute)
+router.get("/quiz/:id", quizIdLoadRoute, function(req,res){
+    // console.log("works");
+    console.log(res.locals.quizObject);
+
+
+    res.render("quiz", {theQuiz: res.locals.quizObject[0]})
+
+})
 router.get('/loadQuiz', quizLoadRoute)
 router.post('/createQuiz', quizCreateRoute)
 router.delete('/deleteQuiz/:id', quizDeleteRoute)
