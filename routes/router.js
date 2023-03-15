@@ -6,7 +6,7 @@ const userCreateRoutePassport = require('./user/createUserPassport')
 const userDeleteRoute = require('./user/deleteUser')
 
 const quizLoadRoute = require('./quiz/loadQuiz')
-const quizIdLoadRoute = require('./quiz/')
+const quizIdLoadRoute = require('./quiz/loadQuizById')
 
 const quizCreateRoute = require('./quiz/createQuiz')
 
