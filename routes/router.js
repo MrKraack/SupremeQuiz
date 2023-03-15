@@ -2,10 +2,7 @@ const express = require('express')
 const passport = require('passport');
 const connectEnsureLogin = require('connect-ensure-login')
 
-const userCreateRoute = require('./user/createUser')
 const userCreateRoutePassport = require('./user/createUserPassport')
-const userLoginRoute = require('./user/loginUser')
-const userLoginRoutePassport = require('./user/loginUserPassport')
 const userDeleteRoute = require('./user/deleteUser')
 const userUpdateRoute = require('./user/updateUser')
 
@@ -20,13 +17,20 @@ const router = express.Router()
 
 
 //Auth routes
-// router.post(
-//     '/login',
-//     passport.authenticate('local', {
-//         failureRedirect: '/login',
-//         successRedirect: '/',
-//     })
-// );
+router.post(
+    '/loginUser',
+    passport.authenticate('local', {
+        failureRedirect: '/login',
+        successRedirect: '/user',
+    })
+);
+
+router.post('/logout', function(req, res, next){
+    req.logout(function(err) {
+        if (err) { return next(err); }
+        res.redirect('/login');
+    });
+});
 
 router.get('/login', function(req, res, next) {
     res.render('login');
@@ -35,6 +39,12 @@ router.get('/login', function(req, res, next) {
 router.get('/signup', function(req, res, next) {
     res.render('signup');
 });
+
+//User routes
+router.post('/register', userCreateRoutePassport)
+// router.post('/loginUser', userLoginRoutePassport)
+router.put('/updateUser/:id', userUpdateRoute)
+router.delete('/deleteUser/:id', userDeleteRoute)
 
 //Website protected routes
 router.get('/', connectEnsureLogin.ensureLoggedIn(), function(req, res, next) {
@@ -49,13 +59,6 @@ router.get('/addquiz', connectEnsureLogin.ensureLoggedIn(), function(req, res, n
 router.get('/stats', connectEnsureLogin.ensureLoggedIn(), function(req, res, next) {
     res.render('stats');
 });
-
-//User routes
-router.post('/register', userCreateRoutePassport)
-router.post('/loginUser', userLoginRoutePassport)
-router.put('/updateUser/:id', userUpdateRoute)
-router.delete('/deleteUser/:id', userDeleteRoute)
-
 
 //quiz routes
 // router.get('/loadQuiz', quizLoadRoute)
