@@ -5,7 +5,7 @@ const userLoginRoute = require('./user/loginUser')
 const userDeleteRoute = require('./user/deleteUser')
 const userUpdateRoute = require('./user/updateUser')
 
-const quizLoadRoute = require('./quiz/loadQuiz')
+// const quizLoadRoute = require('./quiz/loadQuiz')
 
 const quizCreateRoute = require('./quiz/createQuiz')
 
@@ -21,7 +21,7 @@ router.delete('/deleteUser/:id', userDeleteRoute)
 
 
 //quiz routes
-router.get('/loadQuiz', quizLoadRoute)
+// router.get('/loadQuiz', quizLoadRoute)
 router.post('/createQuiz', quizCreateRoute)
 router.delete('/deleteQuiz/:id', quizDeleteRoute)
 

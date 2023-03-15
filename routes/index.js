@@ -3,15 +3,19 @@ var router = express.Router();
 
 /* GET home page. */
 router.get('/',  async function(req, res, next) {
-  //Variable to hold quizArray
-  let quizArray;
-  //Fetch data from Server
-   await fetch("http://localhost:3001/loadQuiz")
-      .then((res) => res.json())
-      .then((data) => quizArray = data)
+  // //Variable to hold quizArray
+  // let quizArray;
+  // //Fetch data from Server
+  //  await fetch("http://localhost:3001/loadQuiz")
+  //     .then((res) => res.json())
+  //     .then((data) => quizArray = data)
+
+  // console.log("quizArray: ");
+  // console.log(quizArray);
 
   //Send server data with render
-  res.render('index', {Quizzez: quizArray});
+  res.render('index');
+  // res.render('index', {Quizzez: quizArray});
 });
 
 
