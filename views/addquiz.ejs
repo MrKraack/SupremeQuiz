@@ -10,8 +10,6 @@
 </head>
 <body>
     <% include nav.ejs %>
-
-
     <article>
         <h2>Add quiz</h2>
         <form id="createQuizForm" action="/createQuiz" method="post">  
@@ -25,11 +23,9 @@
                     Question
                     <input id="question1" name="question1" type="text" required>
                 </label>
-
                 <label for="answer">
                     Answers (check of correct answer)
                 </label>
-
                 <div class="grid">
                     <div class="answer">
                         <input type="checkbox" id="q1answer1IsCorrect" name="q1answer1IsCorrect">
@@ -57,11 +53,9 @@
                     Question
                     <input id="question2" name="question2" type="text" required>
                 </label>
-
                 <label for="answer">
                     Answers (check of correct answer)
                 </label>
-
                 <div class="grid">
                     <div class="answer">
                         <input type="checkbox" id="q2answer1IsCorrect" name="q2answer1IsCorrect">
@@ -93,7 +87,6 @@
                 <label for="answer">
                     Answers (check of correct answer)
                 </label>
-
                 <div class="grid">
                     <div class="answer">
                         <input type="checkbox" id="q3answer1IsCorrect" name="q3answer1IsCorrect">
@@ -115,10 +108,8 @@
                     </div>
                 </div>
             </details>
-
             <input type="submit" placeholder="Create Quiz"/>
         </form>
-
     </article>
 </body>
 </html>
