@@ -3,7 +3,9 @@ const passport = require('passport');
 const connectEnsureLogin = require('connect-ensure-login')
 
 const userCreateRoute = require('./user/createUser')
+const userCreateRoutePassport = require('./user/createUserPassport')
 const userLoginRoute = require('./user/loginUser')
+const userLoginRoutePassport = require('./user/loginUserPassport')
 const userDeleteRoute = require('./user/deleteUser')
 const userUpdateRoute = require('./user/updateUser')
 
@@ -18,13 +20,13 @@ const router = express.Router()
 
 
 //Auth routes
-router.post(
-    '/login',
-    passport.authenticate('local', {
-        failureRedirect: '/login',
-        successRedirect: '/',
-    })
-);
+// router.post(
+//     '/login',
+//     passport.authenticate('local', {
+//         failureRedirect: '/login',
+//         successRedirect: '/',
+//     })
+// );
 
 router.get('/login', function(req, res, next) {
     res.render('login');
@@ -49,8 +51,8 @@ router.get('/stats', connectEnsureLogin.ensureLoggedIn(), function(req, res, nex
 });
 
 //User routes
-router.post('/register', userCreateRoute)
-router.post('/loginUser', passport.authenticate('local', { failureRedirect: '/' }, userLoginRoute))
+router.post('/register', userCreateRoutePassport)
+router.post('/loginUser', userLoginRoutePassport)
 router.put('/updateUser/:id', userUpdateRoute)
 router.delete('/deleteUser/:id', userDeleteRoute)
 
